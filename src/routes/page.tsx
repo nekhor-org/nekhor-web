@@ -172,7 +172,7 @@ const Index = () => {
           );
         })
       ) : (
-        <div className="shimmer-container w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+        <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
           <Shimmer width={350} height={220} />
           <Shimmer width={350} height={220} />
           <Shimmer width={350} height={220} />
@@ -183,7 +183,7 @@ const Index = () => {
           <News list={currentNews} />
         </div>
       ) : (
-        <div className="shimmer-container w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+        <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
           <Shimmer width={350} height={220} />
           <Shimmer width={350} height={220} />
           <Shimmer width={350} height={220} />
@@ -194,7 +194,7 @@ const Index = () => {
           <Publications list={currentPublications} />
         </div>
       ) : (
-        <div className="shimmer-container w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+        <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
           <Shimmer width={350} height={220} />
           <Shimmer width={350} height={220} />
           <Shimmer width={350} height={220} />
