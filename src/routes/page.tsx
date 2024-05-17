@@ -67,7 +67,7 @@ const Index = () => {
     <div className="px-4 overflow-x-hidden pb-16">
       <section className="flex items-center justify-center py-16 flex-col border-b border-gray-200 mb-10">
         <div className="relative mb-8 rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-          Following In The Footsteps Of Padmasambhava .{' '}
+          Nekhor connects you with the Sacred Landscape Awakening.{' '}
           <Link
             title="Following In The Footsteps Of Padmasambhava"
             to="/introduction/following-in-the-footsteps-of-padmasambhava/1"
@@ -80,9 +80,6 @@ const Index = () => {
         <h1 className="text-5xl font-default text-secondary">
           Following in the footsteps of the masters
         </h1>
-        <h3 className="text-xl text-slate-500 mt-6">
-          Nekhor connects you with the Sacred Landscape Awakening
-        </h3>
         <p className="max-w-[620px] leading-7 w-full text-left lg:text-center text-slate-500 mt-8 mx-auto">
           An initiative of{' '}
           <a
