@@ -1,0 +1,16 @@
+{
+  "extends": "@modern-js/tsconfig/base",
+  "compilerOptions": {
+    "declaration": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shared/*": ["./shared/*"],
+      "@api/*": ["./api/lambda/*"],
+      "react": ["./node_modules/@types/react"]
+    },
+    "jsx": "preserve"
+  },
+  "include": ["src", "shared", "config", "modern.config.ts", "api", "config"],
+  "exclude": ["**/node_modules"]
+}

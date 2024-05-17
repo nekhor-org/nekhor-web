@@ -1,0 +1,9 @@
+.banner {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.banner .banner {
+  border-radius: 12px;
+  overflow: hidden;
+}

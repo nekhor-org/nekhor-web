@@ -1,0 +1,36 @@
+FROM node:18-alpine
+
+WORKDIR app
+
+ARG PORT
+ARG API_BASE_URL
+ARG SUPABASE_URL
+ARG SUPABASE_ANON_KEY
+ARG APP_BASE_URL
+
+ENV PORT=${PORT}
+ENV API_BASE_URL=${API_BASE_URL}
+ENV SUPABASE_URL=${SUPABASE_URL}
+ENV SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+ENV APP_BASE_URL=${APP_BASE_URL}
+
+RUN echo PORT
+RUN echo API_BASE_URL
+RUN echo SUPABASE_URL
+RUN echo SUPABASE_ANON_KEY
+RUN echo APP_BASE_URL
+
+COPY package.json .
+COPY src/ ./src
+COPY public/ ./public
+COPY modern.config.ts .
+
+RUN yarn install
+
+RUN yarn run build
+
+COPY . .
+
+EXPOSE 8080
+
+CMD ["yarn", "run", "serve"]
