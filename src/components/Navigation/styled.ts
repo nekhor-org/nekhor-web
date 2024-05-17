@@ -29,7 +29,14 @@ export const NavigationItem = styled.li<any>`
     color: ${props => (props.active ? '#000' : '#ccc')};
     position: relative;
     transition: all 0.1s linear;
-    font-size: 16px;
+    ${props =>
+      props.active
+        ? `
+        font-size: 24px;
+        font-weight: 500;
+        font-family: 'EB Garamond', serif;
+        `
+        : ''}
     &:before {
       position: absolute;
       left: -12px;

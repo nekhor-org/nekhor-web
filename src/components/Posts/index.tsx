@@ -32,35 +32,29 @@ export default function Posts({ list, title, link }: any) {
             </svg>
           </Link>
         </header>
-        <div className="flex flex-col lg:flex-row items-center gap-2 md:gap-8 mt-6 overflow-x-auto md:overflow-x-hidden lg:overflow-visible">
-          {list?.map((el: any) => (
-            <div
+        <div className="mx-auto mt-6 grid max-w-2xl auto-rows-fr grid-cols-1 md:grid-cols-2 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {list.map((el: any) => (
+            <Link
               key={el.id}
-              className="flex w-full lg:w-[392px] h-auto lg:h-[235px] overflow-hidden rounded-xl flex-col items-center hover:opacity-75 transition-all lg:hover:-mt-4 lg:my-0 my-2 group"
+              to={`${link}/${slugify(el.title)}/${el.post_id}`}
+              className="relative isolate flex flex-col hover:opacity-75 transition-all justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
             >
-              <Link
-                to={`${link}/${slugify(el.title)}/${el.post_id}`}
-                title={el.title}
-                className="relative w-full h-full bg-gray-100"
-              >
-                <img
-                  src={`${process.env.API_BASE_URL}${el.image}`}
-                  alt={el.title}
-                  width="392"
-                  height="260"
-                  className="rounded-xl object-fit lg:w-[392px] lg:h-[235px] w-full h-full"
-                />
-                <div className="absolute left-0 bottom-0 bg-gradient-to-t from-black to-transparent w-full h-1/2 rounded-xl"></div>
-                <div className="absolute group-hover:bottom-2 transition-all left-0 bottom-0 z-10 p-3 text-white flex flex-col">
-                  <span className="text-xs opacity-75 uppercase">
-                    {el.local}
-                  </span>
-                  <span className="text-2xl font-default">
-                    {capitalizeString(el.title)}
-                  </span>
-                </div>
-              </Link>
-            </div>
+              <img
+                src={`${process.env.API_BASE_URL}${el.image}`}
+                alt={el.title}
+                className="absolute inset-0 -z-10 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
+              <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+
+              <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
+                <span className="mr-8 uppercase opacity-85">{el.local}</span>
+              </div>
+              <h3 className="mt-3 text-3xl leading-8 font-normal font-default leading-6 text-white">
+                <span className="absolute inset-0" />
+                {capitalizeString(el.title)}
+              </h3>
+            </Link>
           ))}
         </div>
       </div>

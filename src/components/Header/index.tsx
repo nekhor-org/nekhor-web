@@ -46,7 +46,7 @@ export default function Header() {
       <div className="start flex items-center">
         {hasInner ? (
           <button
-            className="button-back transition-all hover:bg-gray-100 mr-2"
+            className="button-back transition-all hover:bg-gray-100 mr-2 hover:opacity-75"
             onClick={() => {
               if (window.history.length > 2) {
                 window.history.back();
@@ -58,7 +58,11 @@ export default function Header() {
             <Icon name="ArrowLeft" size="24px" color="#A67C00" />
           </button>
         ) : undefined}
-        <a href="/" title="Homepage">
+        <a
+          href="/"
+          title="Homepage"
+          className="hover:opacity-75 transition-all"
+        >
           {!hasInner ? (
             <img
               src={logo}
@@ -76,7 +80,11 @@ export default function Header() {
           )}
         </a>
         {hasInner ? (
-          <Link to={`/${titleInner?.toLowerCase()}`} title={titleInner}>
+          <Link
+            to={`/${titleInner?.toLowerCase()}`}
+            title={titleInner}
+            className="hover:underline"
+          >
             <h2 className="font-default text-xl py-2 md:text-3xl ml-4 whitespace-nowrap truncate">
               {titleInner}
             </h2>
@@ -87,7 +95,7 @@ export default function Header() {
         <nav className="nav hidden xl:flex items-center gap-1 text-gray-900">
           <div
             className={`relative flex flex-col py-2 px-2 rounded-lg ${
-              splitRoute?.includes('intro') ? 'bg-gray-100 text-primary' : ''
+              splitRoute?.includes('intro') ? 'text-primary font-medium' : ''
             }`}
           >
             <Menu>
@@ -130,8 +138,8 @@ export default function Header() {
             </Menu>
           </div>
           <div
-            className={`relative flex flex-col py-2 px-2 rounded-lg  ${
-              splitRoute?.includes('buddha') ? 'bg-gray-100 text-primary' : ''
+            className={`relative flex flex-col py-2 px-2 rounded-lg font-default text-xl ${
+              splitRoute?.includes('buddha') ? 'text-primary font-medium' : ''
             }`}
           >
             <Menu>
@@ -174,8 +182,8 @@ export default function Header() {
             </Menu>
           </div>
           <div
-            className={`relative flex flex-col py-2 px-2 rounded-lg  ${
-              splitRoute?.includes('guru') ? 'bg-gray-100 text-primary' : ''
+            className={`relative flex flex-col py-2 px-2 rounded-lg font-default text-xl ${
+              splitRoute?.includes('guru') ? 'text-primary font-medium' : ''
             }`}
           >
             <Menu>
@@ -217,17 +225,17 @@ export default function Header() {
           </div>
           <a
             href="/news"
-            className={`relative flex flex-col hover:underline py-2 px-2 rounded-lg  ${
-              splitRoute?.includes('news') ? 'bg-gray-100 text-primary' : ''
+            className={`relative flex flex-col hover:underline py-1 px-4 rounded-lg font-default text-xl ${
+              splitRoute?.includes('news') ? 'text-primary font-medium' : ''
             }`}
           >
             News
           </a>
           <a
             href="/publications"
-            className={`relative flex flex-col hover:underline py-2 px-2 rounded-lg  ${
+            className={`relative flex flex-col hover:underline py-1 px-4 rounded-lg font-default text-xl ${
               splitRoute?.includes('publications')
-                ? 'bg-gray-100 text-primary'
+                ? 'text-primary font-medium'
                 : ''
             }`}
           >
@@ -235,8 +243,8 @@ export default function Header() {
           </a>
           <a
             href="/about-us"
-            className={`relative flex flex-col hover:underline py-2 px-2 rounded-lg  ${
-              splitRoute?.includes('about') ? 'bg-gray-100 text-primary' : ''
+            className={`relative flex flex-col hover:underline py-1 px-4 rounded-lg font-default text-xl ${
+              splitRoute?.includes('about') ? 'text-primary font-medium' : ''
             }`}
           >
             About Us
@@ -257,7 +265,7 @@ export default function Header() {
           </Drawer.Trigger>
         </div>
         <button
-          className="hidden ml-2 md:inline-flex rounded-full px-6 text-xs uppercase font-semibold py-2.5 border-primary border hover:opacity-90"
+          className="hidden ml-2 text-xs font-bold bg-primary text-white hover:opacity-75 md:inline-flex rounded-full px-6 uppercase py-2.5 border-primary border border-2"
           onClick={handleSubscribe}
         >
           Download App

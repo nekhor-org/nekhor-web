@@ -53,6 +53,9 @@ const SlugPathDetails = () => {
     );
     if (uid && hasItem) {
       setCurrentItem(hasItem);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 800);
     }
   }, [uid, state]);
 
@@ -60,7 +63,7 @@ const SlugPathDetails = () => {
     if (currentItem) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 800);
     }
   }, [currentItem]);
 
@@ -263,9 +266,12 @@ const SlugPathDetails = () => {
             }}
           />
         )}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[24px] mb-8">
+        <div
+          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[24px] mb-0 mt-8 border-t border-gray-100
+border-t border-gray-100"
+        >
           {prevItem ? (
-            <div className="mt-8 border-t border-gray-100 pt-8">
+            <div className="mt-4 pt-8">
               <h5 className="flex items-center gap-4 text-primary mb-4">
                 <Icon name="ArrowLeft" size="24px" color="#A67C00" />
                 PREVIOUS ON THE JOURNEY
@@ -302,7 +308,7 @@ const SlugPathDetails = () => {
             </div>
           ) : undefined}
           {nextItem ? (
-            <div className="mt-8 border-t border-gray-100 pt-8">
+            <div className="mt-4 pt-8">
               <h5 className="flex items-center justify-end gap-4 text-primary mb-4">
                 NEXT STOP ON THE JOURNEY
                 <Icon name="ArrowRight" size="24px" color="#A67C00" />

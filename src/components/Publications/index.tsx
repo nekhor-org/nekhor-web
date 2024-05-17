@@ -4,7 +4,7 @@ import styles from './style.module.css';
 export default function Publications({ list }: any) {
   return (
     <section className={styles.categories}>
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between border-gray-200 border-t pt-12">
         <h3 className="title-default text-4xl font-default">
           Our Publications
         </h3>
@@ -43,9 +43,11 @@ export default function Publications({ list }: any) {
               className="max-w-[240px] w-full rounded-lg"
               alt={item.title}
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col px-4">
               <span className="text-xs mb-2 text-gray-500">{item.date}</span>
-              <h4 className="text-xl line-clamp-3">{item.title}</h4>
+              <h4 className="line-clamp-3 font-default text-3xl leading-8">
+                {item.title}
+              </h4>
               <p className="line-clamp-4 text-sm text-gray-500 mt-2">
                 {item.read}
               </p>
