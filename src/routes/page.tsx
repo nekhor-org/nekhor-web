@@ -77,9 +77,9 @@ const Index = () => {
             Read more <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
-        <h2 className="text-5xl font-default text-secondary">
+        <h1 className="text-5xl font-default text-secondary">
           Following in the footsteps of the masters
-        </h2>
+        </h1>
         <h3 className="text-xl text-slate-500 mt-6">
           Nekhor connects you with the Sacred Landscape Awakening
         </h3>
@@ -205,9 +205,9 @@ const Index = () => {
           <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-start">
             <div className="px-6 md:px-0 lg:pr-4 lg:pt-4">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
-                <h2 className="text-base font-semibold leading-7 text-primary">
+                <h3 className="text-base font-semibold leading-7 text-primary">
                   Android and iOS
-                </h2>
+                </h3>
                 <p className="mt-2 font-default text-4xl font-normal tracking-tight text-gray-900 sm:text-4xl">
                   Download our app
                 </p>
@@ -251,7 +251,10 @@ const Index = () => {
                       </div>
                     </div>
                     <div className="px-6 pb-14 pt-6">
-                      <img src="https://images.squarespace-cdn.com/content/v1/5b735348266c075124b0ffb3/1687691989572-ROF97I4DKIMR6LMGNHY1/PHOTO-2023-06-20-18-37-33.jpg?format=500w" />
+                      <img
+                        src="https://images.squarespace-cdn.com/content/v1/5b735348266c075124b0ffb3/1687691989572-ROF97I4DKIMR6LMGNHY1/PHOTO-2023-06-20-18-37-33.jpg?format=500w"
+                        alt="App image on store"
+                      />
                     </div>
                   </div>
                 </div>

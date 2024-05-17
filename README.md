@@ -4,7 +4,7 @@
 
 ### Circling the Sacred
 
-> An initiative of Lhasey Lotsawa, Nekhor is driven by a single mission: to connect you with the sacred sites where awakened masters have lived, practiced, and benefited our world. We provide this through online resources, print publications and on-the-ground expertise - so that those seeking true wis
+> An initiative of Lhasey Lotsawa, Nekhor is driven by a single mission: to connect you with the sacred sites where awakened masters have lived, practiced, and benefited our world
 
 ### [Website](https://nekhor.org/) | [Android App](https://nekhor.org/) | [iOS App](https://nekhor.org/)
 

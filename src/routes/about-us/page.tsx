@@ -27,6 +27,10 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
+        <meta
+          content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5"
+          name="viewport"
+        />
         <title>About Us — Nekhor</title>
         <link rel="canonical" href={`${process.env.APP_BASE_URL}/about-us`} />
         <meta property="og:site_name" content="Nekhor" />
@@ -36,10 +40,11 @@ const AboutUs = () => {
           content={`${process.env.APP_BASE_URL}/about-us`}
         />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="/thumb.png" />
         <meta
-          property="og:image"
-          content="https://images.squarespace-cdn.com/content/v1/5b735348266c075124b0ffb3/1592936679391-3Y6XQG1N0EFQ8HTX1EML/Asura+Cave+and+Yanglesho%CC%88+-+04.jpg?format=2500w"
-        ></meta>
+          property="keywords"
+          content="Nekhor, Lhasey Lotsawa, Buddhis, guru, lotus, born, following footsteps, android, audio, auspiciously, awakened, awakening, began, benefited, bhutan, blessings, bodh, born, bring, buddha, channel, collected, connect, connects, contents, dakini, dalwa, dechen, descent, download, driven, experience, expertise, explore, favorite, follow, following, footsteps, friendly, gaya, goal, ground, guidelines, guru, have, heaven, india, initiative, installment, intro, introduction, iphone, kushinagar, landscape, later, listen, lived, lotus, lumbini, masters, mission, nekhor, nepal, news, offline, online, padmasambhava, path, pilgrimage, practicalities, practiced, previous, print, project, provide, publication, publications, read, release, resources, sacred, samye, seeking, september, series, shakyamuni, singles, sites, spiritual, stories, subscribe, thirty, tibet, translations, treasured, true, unlimited, upcoming, user, version, view, visual, volume, wisdom, world, years, youtube"
+        />
         <meta itemProp="name" content="About Us — Nekhor" />
         <meta itemProp="url" content={`${process.env.APP_BASE_URL}/about-us`} />
         <meta name="twitter:title" content="About Us — Nekhor" />

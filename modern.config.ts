@@ -30,18 +30,20 @@ export default defineConfig<'rspack'>({
       'https://nekhor.camisetaredutoralpostural.com.br',
       'https://nekhor-web-app-952yc.ondigitalocean.app',
       'https://nekhor.org',
+      'https://nekhor-web-production.up.railway.app',
     ],
     preconnect: [
       'https://nekhor.camisetaredutoralpostural.com.br',
       'https://nekhor-web-app-952yc.ondigitalocean.app',
       'https://nekhor.org',
+      'https://nekhor-web-production.up.railway.app',
     ],
     prefetch: {
       type: 'all-chunks',
       include: [/.*\.png$/],
     },
     chunkSplit: {
-      strategy: 'all-in-one',
+      strategy: 'split-by-experience',
     },
   },
   html: {
@@ -49,7 +51,7 @@ export default defineConfig<'rspack'>({
     title: 'Nekhor — Circling the Sacred',
     meta: {
       description:
-        'An initiative of Lhasey Lotsawa, Nekhor is driven by a single mission: to connect you with the sacred sites where awakened masters have lived, practiced, and benefited our world. We provide this through online resources, print publications and on-the-ground expertise - so that those seeking true wis',
+        'An initiative of Lhasey Lotsawa, Nekhor is driven by a single mission: to connect you with the sacred sites where awakened masters have lived, practiced, and benefited our world.',
       'http-equiv': {
         'http-equiv': 'x-ua-compatible',
         content: 'ie=edge',
