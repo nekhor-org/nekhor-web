@@ -64,6 +64,10 @@ export default defineConfig<'rspack'>({
         rel: 'image_src',
         href: 'http://static1.squarespace.com/static/5b735348266c075124b0ffb3/t/5eabfee42343c149b75ecc7c/1588330213555/NEKHOR-home-Gold.png?format=1500w',
       },
+      'og:image': {
+        rel: 'og:image',
+        href: '/thumb.png',
+      },
       'og:image:width': {
         property: 'og:image:width',
         content: '399',
