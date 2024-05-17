@@ -32,8 +32,9 @@ export default function Subscribe() {
           after 30 days. Cancel anytime.
         </span>
       </div>
-      <div className="flex flex-col w-full gap-4 mt-4">
+      <div className="flex flex-col lg:flex-row w-full gap-4 mt-4">
         <button
+          className="w-full flex items-center"
           type="button"
           onClick={() => {
             window.open(
@@ -50,6 +51,7 @@ export default function Subscribe() {
           />
         </button>
         <button
+          className="w-full flex items-center"
           type="button"
           onClick={() => {
             window.open(

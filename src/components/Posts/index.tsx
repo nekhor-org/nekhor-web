@@ -32,7 +32,7 @@ export default function Posts({ list, title, link }: any) {
             </svg>
           </Link>
         </header>
-        <div className="mx-auto mt-6 grid max-w-2xl auto-rows-fr grid-cols-1 md:grid-cols-2 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="w-full mx-auto mt-6 grid max-w-2xl auto-rows-fr grid-cols-1 md:grid-cols-2 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {list.map((el: any) => (
             <Link
               key={el.id}

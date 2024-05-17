@@ -199,7 +199,7 @@ const SlugPathDetails = () => {
             />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
             <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-            <div className="absolute left-2 bottom-0 px-4">
+            <div className="absolute left-2 bottom-0">
               <div className="w-full flex flex-col md:flex-row justify-center md:justify-between w-full items-center gap-4 p-4 mt-4 rounded-lg mb-4 backdrop-blur-sm bg-white/50">
                 <div className="start w-full lg:w-auto flex flex-row items-center">
                   <button

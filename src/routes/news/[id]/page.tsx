@@ -293,14 +293,14 @@ const NewsPathDetails = () => {
                   />
                   <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
                   <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-                  <h3 className="mt-3 text-3xl font-semibold font-default text-white">
+                  <h3 className="mt-3 text-3xl font-semibold font-default text-white mb-2">
                     <span title={nextItem.title}>
                       <span className="absolute inset-0" />
                       {capitalizeString(nextItem.title)}
                     </span>
                   </h3>
                   {nextItem.subtitle || nextItem?.read ? (
-                    <div className="text-white text-md">
+                    <div className="text-white text-md leading-5">
                       {nextItem?.read || capitalizeString(nextItem.subtitle)}
                     </div>
                   ) : undefined}
