@@ -12,7 +12,8 @@ export default function News({ list }: any) {
           className="text-primary hover:underline flex items-center"
         >
           View all
-          <svg
+          {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -29,11 +30,12 @@ export default function News({ list }: any) {
         </Link>
       </header>
       <ul
+        // biome-ignore lint/a11y/noRedundantRoles: <explanation>
         role="list"
         className="mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-left sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4 xl:grid-cols-4"
       >
-        {list?.slice(0, 4)?.map((item: any) => (
-          <li key={item.name}>
+        {list?.slice(0, 4)?.map((item: any, i: number) => (
+          <li key={`${item.name}-${i}`}>
             <Link
               to={`/news/${item.slug}`}
               key={item.id}

@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs } from '@modern-js/runtime/router';
+import { defer, type LoaderFunctionArgs } from '@modern-js/runtime/router';
 import { groupDataByLocal, slugify } from '@/utils/string';
 import { createClient } from '@/utils/supabase.server';
 
@@ -36,7 +36,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     ? Object.keys(normalizePosts(json)?.data)
     : undefined;
   const posts = normalizePosts(json);
-  return {
+
+  return defer({
     meta: {
       about: {
         data: about,
@@ -71,5 +72,5 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         };
       }),
     },
-  };
+  });
 };

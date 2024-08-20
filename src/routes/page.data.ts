@@ -1,3 +1,4 @@
+import { defer, type LoaderFunctionArgs } from '@modern-js/runtime/router';
 import { groupDataByLocal } from '@/utils/string';
 import { createClient } from '@/utils/supabase.server';
 
@@ -58,15 +59,16 @@ export const loader = async ({ request }: any) => {
     `${process.env.API_BASE_URL}/api/posts?language_id=1`,
   );
   const json = await response.json();
+
   return {
-    posts: normalizePosts(json),
-    publications: {
-      data: publications,
-      status: 200,
-    },
     news: {
       data: news,
       status: 200,
     },
+    publications: {
+      data: publications,
+      status: 200,
+    },
+    posts: normalizePosts(json),
   };
 };

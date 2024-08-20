@@ -1,8 +1,8 @@
 // import { LoaderFunctionArgs } from '@modern-js/runtime/router';
-import { LoaderFunctionArgs } from '@modern-js/runtime/router';
+import defer, { type LoaderFunctionArgs } from '@modern-js/runtime/router';
 import { createClient } from '@/utils/supabase.server';
 
-interface PostItem {
+export interface PostItem {
   id: number | string;
   read: string;
   slug: string;

@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs } from '@modern-js/runtime/router';
+import { defer, type LoaderFunctionArgs } from '@modern-js/runtime/router';
 import { createClient } from '@/utils/supabase.server';
 
 interface PostItem {
@@ -17,7 +17,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const supabase = createClient(request);
   const { data: publications } = await supabase.from('publication').select('*');
   const { data: about } = await supabase.from('about').select('*');
-  return {
+  return defer({
     publications: {
       data: publications,
       status: 200,
@@ -26,5 +26,5 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       data: about ? about[0] : [],
       status: 200,
     },
-  };
+  });
 };

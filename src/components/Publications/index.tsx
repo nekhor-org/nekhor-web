@@ -14,7 +14,8 @@ export default function Publications({ list }: any) {
           className="text-primary hover:underline flex items-center gap-1"
         >
           View all
-          <svg
+          {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -34,7 +35,7 @@ export default function Publications({ list }: any) {
         {list?.slice(0, 3)?.map((item: any) => (
           <Link
             to={`/publications/${item.slug}`}
-            key={item.id}
+            key={`${item.id}-${item.title}`}
             title={item.title}
             className="flex gap-3 items-center transition-all hover:opacity-50"
           >

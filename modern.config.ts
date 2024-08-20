@@ -3,7 +3,9 @@ import { appTools, defineConfig } from '@modern-js/app-tools';
 
 export default defineConfig<'rspack'>({
   server: {
-    ssr: true,
+    ssr: {
+      mode: 'stream',
+    },
   },
   output: {
     charset: 'utf8',

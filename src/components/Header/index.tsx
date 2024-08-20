@@ -1,101 +1,103 @@
 /* eslint-disable react/no-array-index-key */
-import { useState, useEffect } from 'react';
-import { Drawer } from 'vaul';
+import { useState, useEffect } from "react";
+import { NoSSR } from "@modern-js/runtime/ssr";
+import { Drawer } from "vaul";
 import {
-  Link,
-  useLocation,
-  useNavigate,
-  useParams,
-} from '@modern-js/runtime/router';
-import { Menu, Transition } from '@headlessui/react';
-import { useModel } from '@modern-js/runtime/model';
+	Link,
+	useLocation,
+	useNavigate,
+	useParams,
+} from "@modern-js/runtime/router";
+import { Menu, Transition } from "@headlessui/react";
+import { useModel } from "@modern-js/runtime/model";
 
-import * as S from './styled';
+import * as S from "./styled";
 
-import Icon from '@/components/Icon';
-import logo from '@/assets/logo.png';
-import icon from '@/assets/favicon.png';
-import uiModel from '@/models/ui';
-import { capitalizeString, slugify } from '@/utils/string';
+import Icon from "@/components/Icon";
+import logo from "@/assets/logo.png";
+import icon from "@/assets/favicon.png";
+import uiModel from "@/models/ui";
+import { capitalizeString, slugify } from "@/utils/string";
 
 export default function Header() {
-  const [state, actions] = useModel(uiModel);
-  const location = useLocation();
-  const params = useParams();
-  const navigate = useNavigate();
-  const [hasInner, setHasInnerPage] = useState(false);
+	const [state, actions] = useModel(uiModel);
+	const location = useLocation();
+	const params = useParams();
+	const navigate = useNavigate();
+	const [hasInner, setHasInnerPage] = useState(false);
 
-  const splitRoute = location?.pathname?.split('/')[1];
-  const titleInner = params.id
-    ? splitRoute?.charAt(0).toUpperCase() + splitRoute?.substring(1, 99)
-    : '';
+	const splitRoute = location?.pathname?.split("/")[1];
+	const titleInner = params.id
+		? splitRoute?.charAt(0).toUpperCase() + splitRoute?.substring(1, 99)
+		: "";
 
-  const handleSubscribe = () => {
-    actions.setMenuDrawer({
-      visible: true,
-      type: 'subscribe',
-    });
-  };
+	const handleSubscribe = () => {
+		actions.setMenuDrawer({
+			visible: true,
+			type: "subscribe",
+		});
+	};
 
-  useEffect(() => {
-    setHasInnerPage(location?.pathname?.split('/')?.length > 2);
-  }, [location]);
+	useEffect(() => {
+		setHasInnerPage(location?.pathname?.split("/")?.length > 2);
+	}, [location]);
 
-  return (
-    <S.Header className="backdrop-blur-sm bg-white/75">
-      <div className="start flex items-center">
-        {hasInner ? (
-          <button
-            className="button-back transition-all hover:bg-gray-100 mr-2 hover:opacity-75"
-            onClick={() => {
-              if (window.history.length > 2) {
-                window.history.back();
-              } else {
-                navigate('/');
-              }
-            }}
-          >
-            <Icon name="ArrowLeft" size="24px" color="#A67C00" />
-          </button>
-        ) : undefined}
-        <a
-          href="/"
-          title="Homepage"
-          className="hover:opacity-75 transition-all"
-        >
-          {!hasInner ? (
-            <img
-              src={logo}
-              height="52"
-              alt="Logo Nekhor"
-              className="max-h-[42px] lg:max-h-[52px]"
-            />
-          ) : (
-            <img
-              src={icon}
-              height="52"
-              alt="Icon Nekhor"
-              className="max-h-[42px] lg:max-h-[52px]"
-            />
-          )}
-        </a>
-        {hasInner ? (
-          <Link
-            to={`/${titleInner?.toLowerCase()}`}
-            title={titleInner}
-            className="hover:underline"
-          >
-            <h2 className="font-default text-xl py-2 md:text-3xl ml-4 whitespace-nowrap truncate">
-              {titleInner}
-            </h2>
-          </Link>
-        ) : undefined}
-      </div>
+	return (
+		<S.Header className="backdrop-blur-sm bg-white/75">
+			<div className="start flex items-center">
+				{hasInner ? (
+					// biome-ignore lint/a11y/useButtonType: <explanation>
+					<button
+						className="button-back transition-all hover:bg-gray-100 mr-2 hover:opacity-75"
+						onClick={() => {
+							if (window.history.length > 2) {
+								window.history.back();
+							} else {
+								navigate("/");
+							}
+						}}
+					>
+						<Icon name="ArrowLeft" size="24px" color="#A67C00" />
+					</button>
+				) : undefined}
+				<a
+					href="/"
+					title="Homepage"
+					className="hover:opacity-75 transition-all"
+				>
+					{!hasInner ? (
+						<img
+							src={logo}
+							height="52"
+							alt="Logo Nekhor"
+							className="max-h-[42px] lg:max-h-[52px]"
+						/>
+					) : (
+						<img
+							src={icon}
+							height="52"
+							alt="Icon Nekhor"
+							className="max-h-[42px] lg:max-h-[52px]"
+						/>
+					)}
+				</a>
+				{hasInner ? (
+					<Link
+						to={`/${titleInner?.toLowerCase()}`}
+						title={titleInner}
+						className="hover:underline"
+					>
+						<h2 className="font-default text-xl py-2 md:text-3xl ml-4 whitespace-nowrap truncate">
+							{titleInner}
+						</h2>
+					</Link>
+				) : undefined}
+			</div>
       <div className="end">
         <nav className="nav hidden xl:flex items-center gap-1 text-gray-900">
           <div
             className={`relative flex flex-col py-2 px-2 rounded-lg ${
-              splitRoute?.includes('intro') ? 'text-primary font-medium' : ''
+              splitRoute?.includes("intro") ? "text-primary font-medium" : ""
             }`}
           >
             <Menu>
@@ -119,7 +121,7 @@ export default function Header() {
                   <Menu.Items className="min-w-[200px] max-w-[300px] max-h-[325px] overflow-y-auto">
                     {state?.meta?.posts?.data?.Introduction?.map(
                       (item: any, index: number) => (
-                        <Menu.Item key={index}>
+                        <Menu.Item key={`${item.title}-${index}`}>
                           <Link
                             to={`/introduction/${slugify(item.title)}/${
                               item.post_id
@@ -139,7 +141,7 @@ export default function Header() {
           </div>
           <div
             className={`relative flex flex-col py-2 px-2 rounded-lg font-default text-xl ${
-              splitRoute?.includes('buddha') ? 'text-primary font-medium' : ''
+              splitRoute?.includes("buddha") ? "text-primary font-medium" : ""
             }`}
           >
             <Menu>
@@ -161,9 +163,9 @@ export default function Header() {
               >
                 <div className="z-10 absolute top-6 focus:border-0 backdrop-blur-sm bg-white/95 p-4 rounded-lg shadow-lg border border-gray-200">
                   <Menu.Items className="min-w-[200px] max-w-[300px] max-h-[325px] overflow-y-auto">
-                    {state?.meta?.posts?.data['The Buddha']?.map(
+                    {state?.meta?.posts?.data?.Buddha?.map(
                       (item: any, index: number) => (
-                        <Menu.Item key={index}>
+                        <Menu.Item key={`${item.title}-${index}`}>
                           <Link
                             to={`/buddha/${slugify(item.title)}/${
                               item.post_id
@@ -183,7 +185,7 @@ export default function Header() {
           </div>
           <div
             className={`relative flex flex-col py-2 px-2 rounded-lg font-default text-xl ${
-              splitRoute?.includes('guru') ? 'text-primary font-medium' : ''
+              splitRoute?.includes("guru") ? "text-primary font-medium" : ""
             }`}
           >
             <Menu>
@@ -207,7 +209,7 @@ export default function Header() {
                   <Menu.Items className="min-w-[200px] max-w-[300px] max-h-[325px] overflow-y-auto">
                     {state?.meta?.posts?.data?.Guru?.map(
                       (item: any, index: number) => (
-                        <Menu.Item key={index}>
+                        <Menu.Item key={`${item.title}-${index}`}>
                           <Link
                             to={`/guru/${slugify(item.title)}/${item.post_id}`}
                             title={capitalizeString(item.title)}
@@ -226,7 +228,7 @@ export default function Header() {
           <a
             href="/news"
             className={`relative flex flex-col hover:underline py-1 px-4 rounded-lg font-default text-xl ${
-              splitRoute?.includes('news') ? 'text-primary font-medium' : ''
+              splitRoute?.includes("news") ? "text-primary font-medium" : ""
             }`}
           >
             News
@@ -234,9 +236,9 @@ export default function Header() {
           <a
             href="/publications"
             className={`relative flex flex-col hover:underline py-1 px-4 rounded-lg font-default text-xl ${
-              splitRoute?.includes('publications')
-                ? 'text-primary font-medium'
-                : ''
+              splitRoute?.includes("publications")
+                ? "text-primary font-medium"
+                : ""
             }`}
           >
             Publications
@@ -244,7 +246,7 @@ export default function Header() {
           <a
             href="/about-us"
             className={`relative flex flex-col hover:underline py-1 px-4 rounded-lg font-default text-xl ${
-              splitRoute?.includes('about') ? 'text-primary font-medium' : ''
+              splitRoute?.includes("about") ? "text-primary font-medium" : ""
             }`}
           >
             About Us
@@ -255,7 +257,7 @@ export default function Header() {
             onClick={() =>
               actions.setMenuDrawer({
                 visible: true,
-                type: 'menu',
+                type: "menu",
               })
             }
           >
@@ -264,13 +266,15 @@ export default function Header() {
             </div>
           </Drawer.Trigger>
         </div>
+        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
         <button
+          id="download-app"
           className="hidden ml-2 text-xs font-bold bg-primary text-white hover:opacity-75 md:inline-flex rounded-full px-6 uppercase py-2.5 border-primary border border-2"
           onClick={handleSubscribe}
         >
           Download App
         </button>
       </div>
-    </S.Header>
-  );
+		</S.Header>
+	);
 }

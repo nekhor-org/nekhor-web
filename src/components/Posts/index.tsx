@@ -16,7 +16,8 @@ export default function Posts({ list, title, link }: any) {
             className="text-primary hover:underline flex items-center gap-1"
           >
             View all
-            <svg
+            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -33,9 +34,9 @@ export default function Posts({ list, title, link }: any) {
           </Link>
         </header>
         <div className="w-full mx-auto mt-6 grid max-w-2xl auto-rows-fr grid-cols-1 md:grid-cols-2 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {list.map((el: any) => (
+          {list.map((el: any, i: number) => (
             <Link
-              key={el.id}
+              key={`${el.title}-${i}`}
               to={`${link}/${slugify(el.title)}/${el.post_id}`}
               className="relative isolate flex flex-col hover:opacity-75 transition-all justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
             >

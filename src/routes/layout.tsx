@@ -1,14 +1,16 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useModel } from '@modern-js/runtime/model';
 import { Helmet } from '@modern-js/runtime/head';
-import { Outlet, useLoaderData } from '@modern-js/runtime/router';
+import { Await, Outlet, useLoaderData } from '@modern-js/runtime/router';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import uiModel from '@/models/ui';
 import DrawerMenu from '@/components/Drawer';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './index.css';
+import { NoSSR } from '@modern-js/runtime/ssr';
+import { MoonLoader } from 'react-spinners';
 
 export default function Layout() {
   const { meta } = useLoaderData() as any;
@@ -19,6 +21,12 @@ export default function Layout() {
       actions.setMeta(meta);
     }
   }, [state, meta]);
+
+  const metaPromise = new Promise<any>(resolve => {
+    setTimeout(() => {
+      resolve(meta);
+    }, 100);
+  });
 
   return (
     <>
@@ -83,13 +91,23 @@ seeking true wisdom can follow in their footsteps, and bring their
 blessings onto the spiritual path."
         />
       </Helmet>
-      <div vaul-drawer-wrapper="">
-        <DrawerMenu>
-          <Header />
-          <Outlet />
-          <Footer />
-        </DrawerMenu>
-      </div>
+      <Suspense
+        fallback={
+          <div className="w-full py-[80px] justify-center flex items-center">
+            <MoonLoader color="#a67c00" />
+          </div>
+        }
+      >
+        <Await resolve={metaPromise}>
+          <div vaul-drawer-wrapper="">
+            <DrawerMenu>
+              <Header />
+              <Outlet />
+              <Footer />
+            </DrawerMenu>
+          </div>
+        </Await>
+      </Suspense>
     </>
   );
 }

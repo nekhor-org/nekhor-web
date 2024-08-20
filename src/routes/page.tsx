@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link, useLoaderData } from '@modern-js/runtime/router';
+import React, { useEffect, Suspense } from 'react';
+import { Link, useLoaderData, Await } from '@modern-js/runtime/router';
 import { useModel } from '@modern-js/runtime/model';
 import { Shimmer } from 'react-shimmer';
 import {
@@ -86,6 +86,7 @@ const Index = () => {
             href="https://www.lhaseylotsawa.org/"
             title="Samye Translations"
             target="_blank"
+            rel="noreferrer"
             className="text-secondary underline hover:text-blue-400"
           >
             Samye Translations
@@ -95,6 +96,7 @@ const Index = () => {
             href="/about-us"
             title="About Us"
             target="_blank"
+            rel="noreferrer"
             className="text-secondary underline hover:text-blue-400"
           >
             single mission
@@ -104,6 +106,7 @@ const Index = () => {
           <a
             href="/introduction/the-path-of-pilgrimage/3"
             target="_blank"
+            rel="noreferrer"
             className="text-secondary underline hover:text-blue-400"
             title="Online resources"
           >
@@ -118,6 +121,7 @@ const Index = () => {
             href="/about-us"
             title="About Us"
             target="_blank"
+            rel="noreferrer"
             className="text-secondary underline hover:text-blue-400"
           >
             on-the-ground expertise
@@ -128,6 +132,7 @@ const Index = () => {
           <a
             href="https://apps.apple.com/us/app/nekhor/id1495713473"
             target="_blank"
+            rel="noreferrer"
             className="text-secondary underline hover:text-blue-400"
             title="Download iOS App"
           >
@@ -137,6 +142,7 @@ const Index = () => {
           <a
             href="https://play.google.com/store/apps/details?gl=US&amp;hl=en&amp;id=com.cavernalabs.nekhor"
             target="_blank"
+            rel="noreferrer"
             title="Download Android App"
           >
             Android
@@ -145,6 +151,7 @@ const Index = () => {
           <a
             href="https://www.youtube.com/@nekhor790"
             target="_blank"
+            rel="noreferrer"
             title="Youtube"
           >
             YouTube
@@ -152,51 +159,91 @@ const Index = () => {
           channel for a full visual experience.{' '}
         </p>
       </section>
-      {currentData ? (
-        Object.entries(currentData)?.map((item: any) => {
-          const [key, values] = item;
-          return (
-            <div
-              key={key}
-              className="container max-w-[1240px] mx-auto flex flex-col pb-10 divide-y divide-gray-200"
-            >
-              <Posts
-                title={key}
-                link={`/${key.toLowerCase()?.replace('the buddha', 'buddha')}`}
-                list={values?.slice(0, 3)}
-              />
+
+      <Suspense
+        fallback={
+          <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+            <Shimmer width={350} height={220} />
+            <Shimmer width={350} height={220} />
+            <Shimmer width={350} height={220} />
+          </div>
+        }
+      >
+        <Await resolve={currentData}>
+          {currentData ? (
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            Object.entries(currentData)?.map((item: any) => {
+              const [key, values] = item;
+              return (
+                <div
+                  key={key}
+                  className="container max-w-[1240px] mx-auto flex flex-col pb-10 divide-y divide-gray-200"
+                >
+                  <Posts
+                    title={key}
+                    link={`/${key.toLowerCase()?.replace('the buddha', 'buddha')}`}
+                    list={values?.slice(0, 3)}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+              <Shimmer width={350} height={220} />
+              <Shimmer width={350} height={220} />
+              <Shimmer width={350} height={220} />
             </div>
-          );
-        })
-      ) : (
-        <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
-          <Shimmer width={350} height={220} />
-          <Shimmer width={350} height={220} />
-          <Shimmer width={350} height={220} />
-        </div>
-      )}
-      {currentNews?.length ? (
-        <div className="container mb-8 max-w-[1240px] mx-auto flex flex-col pb-10 divide-y divide-gray-200">
-          <News list={currentNews} />
-        </div>
-      ) : (
-        <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
-          <Shimmer width={350} height={220} />
-          <Shimmer width={350} height={220} />
-          <Shimmer width={350} height={220} />
-        </div>
-      )}
-      {currentPublications?.length ? (
-        <div className="container max-w-[1240px] mx-auto flex flex-col pb-10 divide-y divide-gray-200">
-          <Publications list={currentPublications} />
-        </div>
-      ) : (
-        <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
-          <Shimmer width={350} height={220} />
-          <Shimmer width={350} height={220} />
-          <Shimmer width={350} height={220} />
-        </div>
-      )}
+          )}
+        </Await>
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+            <Shimmer width={350} height={220} />
+            <Shimmer width={350} height={220} />
+            <Shimmer width={350} height={220} />
+          </div>
+        }
+      >
+        <Await resolve={currentNews}>
+          {currentNews?.length ? (
+            <div className="container mb-8 max-w-[1240px] mx-auto flex flex-col pb-10 divide-y divide-gray-200">
+              <News list={currentNews} />
+            </div>
+          ) : (
+            <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+              <Shimmer width={350} height={220} />
+              <Shimmer width={350} height={220} />
+              <Shimmer width={350} height={220} />
+            </div>
+          )}
+        </Await>
+      </Suspense>
+
+      <Suspense
+        fallback={
+          <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+            <Shimmer width={350} height={220} />
+            <Shimmer width={350} height={220} />
+            <Shimmer width={350} height={220} />
+          </div>
+        }
+      >
+        <Await resolve={currentPublications}>
+          {currentPublications?.length ? (
+            <div className="container max-w-[1240px] mx-auto flex flex-col pb-10 divide-y divide-gray-200">
+              <Publications list={currentPublications} />
+            </div>
+          ) : (
+            <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
+              <Shimmer width={350} height={220} />
+              <Shimmer width={350} height={220} />
+              <Shimmer width={350} height={220} />
+            </div>
+          )}
+        </Await>
+      </Suspense>
+
       <div className="overflow-hidden bg-white py-24 sm:py-32 border-t border-gray-200 mt-12">
         <div className="mx-auto max-w-7xl md:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-start">
