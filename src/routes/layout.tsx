@@ -93,13 +93,9 @@ blessings onto the spiritual path."
       </Helmet>
       <div vaul-drawer-wrapper="">
         <DrawerMenu>
-          <NoSSR>
-            <Header />
-          </NoSSR>
+          <Header />
           <Outlet />
-          <NoSSR>
-            <Footer />
-          </NoSSR>
+          <Footer />
         </DrawerMenu>
       </div>
     </>
