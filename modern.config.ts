@@ -42,10 +42,7 @@ export default defineConfig<'rspack'>({
     ],
     prefetch: {
       type: 'all-chunks',
-      include: [/.*\.png$/],
-    },
-    chunkSplit: {
-      strategy: 'split-by-experience',
+      include: [/.*\.(png|webp|jpg|ico)$/],
     },
   },
   html: {

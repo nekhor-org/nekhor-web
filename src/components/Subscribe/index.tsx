@@ -1,6 +1,6 @@
 import styles from './style.module.css';
-import googlePlay from '@/assets/download-googleplay.png';
-import appStore from '@/assets/download-appstore.png';
+import googlePlay from '@/assets/download-googleplay.webp';
+import appStore from '@/assets/download-appstore.webp';
 import Icon from '@/components/Icon';
 
 export default function Subscribe() {

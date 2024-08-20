@@ -1,7 +1,7 @@
 import { Link } from '@modern-js/runtime/router';
 import logo from '@/assets/logo.png';
-import googlePlay from '@/assets/download-googleplay.png';
-import appStore from '@/assets/download-appstore.png';
+import googlePlay from '@/assets/download-googleplay.webp';
+import appStore from '@/assets/download-appstore.webp';
 
 export default function Footer() {
   return (
@@ -18,9 +18,9 @@ export default function Footer() {
           </div>
           <div className="flex xl:ml-20">
             <div className="text-sm">
-              <h5 className="font-semibold font-default text-lg">
+              <h2 className="font-semibold font-default text-lg">
                 Getting started
-              </h5>
+              </h2>
               <ul className="mt-5 space-y-4">
                 <li>
                   <Link
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
           <div className="flex xl:ml-20">
             <div className="text-sm">
-              <h5 className="font-semibold font-default text-lg">Explore</h5>
+              <h2 className="font-semibold font-default text-lg">Explore</h2>
               <ul className="mt-5 space-y-4">
                 <li>
                   <Link

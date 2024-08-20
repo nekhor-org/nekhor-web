@@ -21,7 +21,7 @@ const IdPath = () => {
     <>
       <Helmet>
         <meta
-          content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5"
+          content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=3"
           name="viewport"
         />
         <link rel="canonical" href={`${process.env.APP_BASE_URL}/${id}`} />

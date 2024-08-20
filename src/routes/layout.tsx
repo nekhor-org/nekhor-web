@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, Suspense } from 'react';
+import { useEffect } from 'react';
 import { useModel } from '@modern-js/runtime/model';
 import { Helmet } from '@modern-js/runtime/head';
-import { Await, Outlet, useLoaderData } from '@modern-js/runtime/router';
+import { Outlet, useLoaderData } from '@modern-js/runtime/router';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import uiModel from '@/models/ui';
@@ -32,7 +32,7 @@ export default function Layout() {
     <>
       <Helmet>
         <meta
-          content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5"
+          content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=3"
           name="viewport"
         />
         <link rel="canonical" href={`${process.env.APP_BASE_URL}`} />
@@ -91,23 +91,17 @@ seeking true wisdom can follow in their footsteps, and bring their
 blessings onto the spiritual path."
         />
       </Helmet>
-      <Suspense
-        fallback={
-          <div className="w-full py-[80px] justify-center flex items-center">
-            <MoonLoader color="#a67c00" />
-          </div>
-        }
-      >
-        <Await resolve={metaPromise}>
-          <div vaul-drawer-wrapper="">
-            <DrawerMenu>
-              <Header />
-              <Outlet />
-              <Footer />
-            </DrawerMenu>
-          </div>
-        </Await>
-      </Suspense>
+      <div vaul-drawer-wrapper="">
+        <DrawerMenu>
+          <NoSSR>
+            <Header />
+          </NoSSR>
+          <Outlet />
+          <NoSSR>
+            <Footer />
+          </NoSSR>
+        </DrawerMenu>
+      </div>
     </>
   );
 }

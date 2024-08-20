@@ -159,7 +159,6 @@ const Index = () => {
           channel for a full visual experience.{' '}
         </p>
       </section>
-
       <Suspense
         fallback={
           <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
@@ -219,7 +218,6 @@ const Index = () => {
           )}
         </Await>
       </Suspense>
-
       <Suspense
         fallback={
           <div className="shimmer-container max-w-[1240px] mx-auto w-full text-center mx-auto flex grid grid-cols-3 gap-2 mt-4">
@@ -243,7 +241,6 @@ const Index = () => {
           )}
         </Await>
       </Suspense>
-
       <div className="overflow-hidden bg-white py-24 sm:py-32 border-t border-gray-200 mt-12">
         <div className="mx-auto max-w-7xl md:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-start">
