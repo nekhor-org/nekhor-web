@@ -45,7 +45,7 @@ export default defineConfig<'rspack'>({
       include: [/.*\.(png|webp|jpg|ico)$/],
     },
     chunkSplit: {
-      strategy: 'split-by-experience',
+      strategy: 'all-in-one',
     },
   },
   html: {
