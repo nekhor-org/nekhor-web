@@ -44,6 +44,9 @@ export default defineConfig<'rspack'>({
       type: 'all-chunks',
       include: [/.*\.(png|webp|jpg|ico)$/],
     },
+    chunkSplit: {
+      strategy: 'split-by-experience',
+    },
   },
   html: {
     favicon: './src/assets/favicon.png',
